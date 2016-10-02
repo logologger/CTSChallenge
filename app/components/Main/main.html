@@ -1,0 +1,85 @@
+ 
+<div class="container main_container" >
+  <div class="row">
+  
+    <div class="col-md-9">
+    <div class="wrapper">
+    
+      <input type="search" class="form-control" placeholder="Search (by Title,level or language)" />
+      
+        
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+    <div class="panel panel-default panel-primary" ng-repeat="w in main.websites">
+      <div class="panel panel-heading"><!-- Get Image Link by calling the calling the function -->
+
+      <span ><img class="img-responsive img-rounded  tagImage" src="{{ main.getImageLink(w.language) }}"/>
+        {{w.title}}
+        </span>
+        <p class="text-right ">{{w.compiler_status}} |  <span class="lang">{{w.language}}</span></p>
+
+      </div>
+        <div class="panel-body" hljs hljs-source="w.source_code" style="max-height: 300;overflow-y: scroll;"></div>
+    </div>
+
+    </div>
+    <div class="col-md-3">
+    <div class="panel panel-default panel-danger">
+    <div class="panel panel-heading">Filter by Status</div>
+    <div class="panel-body">
+      
+      <div ng-repeat="v in main.status">
+        <input type="checkbox"  ng-model="checked" value="{{v}}" ng-change="main.showData(v)"/><!-- Ideally it should be main.checked but for now to avoid somep problem it is done like this-->
+        <label for="{{v}}">{{v}}</label>
+        </div><!-- ng repeat-->
+       
+      
+     
+      </div><!--panel Body -->
+
+    
+     
+      </div><!--panel default -->
+       <div class="panel panel-default panel-info">
+    <div class="panel panel-heading">Stastical Analysis</div>
+    <div class="panel-body">
+    <p>Top 5 languages used</p>
+      <ul class="list-group">
+  <li class="list-group-item">Java <span class="badge">12</span></li>
+  <li class="list-group-item">C++ <span class="badge">5</span></li> 
+  <li class="list-group-item">C <span class="badge">3</span></li> 
+</ul>
+<p>Top 2 Submissions attempted</p>
+      <ul class="list-group">
+  <li class="list-group-item">579D-Group Snake <span class="badge">12</span></li>
+  <li class="list-group-item">623 Billy and Jane <span class="badge">5</span></li> 
+  
+</ul>
+<p>Number of Submission per Level</p>
+      <ul class="list-group">
+  <li class="list-group-item">Easy <span class="badge">129</span></li>
+  <li class="list-group-item">Medium <span class="badge">512</span></li> 
+  <li class="list-group-item">Hard <span class="badge">3123</span></li> 
+</ul>
+<p>Total Submissions Used:<b>5134</b></p>
+      
+       
+      
+     
+      </div><!--panel Body -->
+
+    
+     
+      </div><!--panel default -->
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</div>
