@@ -5,8 +5,11 @@ angular.module('mainController',[])
     
 	 var vm=this;
 	 vm.checked=false;
+	 var currentPage=0;
+	 var totalPage=50;
+	 vm.websites=[];
 	 vm.status=["Wrong Answer","Skipped","Accepted","RunTime/Compilation Error","Memory/Time Limit Exceeded"];
-	 vm.results=callService.doServiceCall(callback);
+	 vm.results=callService.doServiceCall(callback,1);
 	 vm.langImage=callService.getAllLangImage(callbackforImageLang);
 	 vm.getImageLink=function(langName){
 
@@ -22,6 +25,17 @@ angular.module('mainController',[])
 	 			}
 	 		}
 	 	
+	 }
+	 vm.NextPage=function(){
+	 	if(currentPage<totalPage){
+	 		currentPage++;
+
+	 	}
+
+	 	vm.results=callService.doServiceCall(callback,currentPage);
+
+
+
 	 }
 	 vm.showData=function(data){
 	 		// if(vm.checked===true){
@@ -52,7 +66,13 @@ angular.module('mainController',[])
 
 	 	CommonDataFactory.setActualData(data.websites);
 	 	vm.results=data;
-	 	vm.websites=data.websites;
+	 	angular.forEach(data.websites,function(key,value){
+	 		
+
+	 		vm.websites.push(key);
+
+	 	})
+	 //	vm.websites.push(data.websites);
 
 	 	
 
