@@ -8,7 +8,7 @@ angular.module('mainService',[])
 
     authFactory.doServiceCall=function(callback,page){
 
-    
+    angular.element(document.querySelector('body')).addClass('loading');
         $http({
             method:'GET',
             url:'http://hackerearth.0x10.info/api/ctz_coders',
@@ -25,6 +25,7 @@ angular.module('mainService',[])
 
             //Success Reponse
            // console.log("%c Callback Came"+JSON.stringify(response),"font-size:14px;")
+           angular.element(document.querySelector('body')).removeClass('loading');
             callback(response.data);
             return response.data;
 

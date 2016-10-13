@@ -8,6 +8,7 @@ angular.module('mainController',[])
 	 var currentPage=0;
 	 var totalPage=50;
 	 vm.websites=[];
+	 // vm.searchText={};
 	 vm.status=["Wrong Answer","Skipped","Accepted","RunTime/Compilation Error","Memory/Time Limit Exceeded"];
 	 vm.results=callService.doServiceCall(callback,1);
 	 vm.langImage=callService.getAllLangImage(callbackforImageLang);
